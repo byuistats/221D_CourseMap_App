@@ -38,16 +38,17 @@ with tab1:
             if how_many_groups == "2 Dependent Groups":
                 st.write("### Inferential Statistics")
                 st.write("Paired t-test")
-                st.write("R Code: ```\n t.test(value ~ group, paired = TRUE)```")
+                st.write("R Code: ```\n t.test(data$value1-data$value2, alternative = \"two.sided\")```")
                 st.write("Matched Pairs t-test")
             elif how_many_groups == "2 Independent Groups":
                 st.write("### Inferential Statistics")
                 st.write("Independent 2-sample t-test")
                 st.write("2-sample t-test")
+                st.write("R Code: ```\n t.test(value ~ group, data = data)```")
             elif how_many_groups == "3+ Independent Groups":
                 st.write("### Inferential Statistics")
                 st.write("ANOVA")
-                st.write("R Code: ```\n aov(value ~ group, data = data)```")
+                st.write("R Code: ```\n aov_output <- aov(value ~ group, data = data) \n summary(aov_output)```")
                 st.write("F-Statistic")
 
         elif explanatory_type_quant == "Quantitative":
