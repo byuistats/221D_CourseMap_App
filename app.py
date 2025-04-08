@@ -54,6 +54,7 @@ with tab1:
         elif explanatory_type_quant == "Quantitative":
             st.write("### Descriptive Statistics")
             st.write("Graph: Scatter plot, geom_smooth(method = 'lm')")
+            st.write("R Code: ```\n ggplot(data, aes(x = x, y = y)) + geom_point() + geom_smooth(method = 'lm')```")
             st.image("https://github.com/byuistats/Math221D_Cannon/raw/master/Images/Regression_Line_Example.png", caption="Boxplot Example", width=200)
             st.write("Correlation Coefficient (r)")
             st.write("R Code:  ```\n cor(data$x, data$y)```")
