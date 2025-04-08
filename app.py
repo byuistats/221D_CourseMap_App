@@ -7,7 +7,7 @@ tab1, tab2 = st.tabs(["Course Map", "Data Wrangling"])
 
 # Tab 1: Decision Tree
 with tab1:
-    st.image("statistics_decision_treeV2.png", caption="Statistics Decision Tree", use_container_width=True)
+    st.image("https://github.com/byuistats/221D_CourseMap_App/raw/main/images/statistics_decision_treeV2.png", caption="Statistics Decision Tree", use_container_width=True)
 
     # --- Decision 1: Response Variable Type ---
     response_type = st.radio("What is your Response variable?", ("Quantitative", "Categorical"))
