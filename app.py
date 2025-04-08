@@ -90,6 +90,8 @@ with tab1:
             st.write("Column Percents:  ```\n prop.table(table(data$row_variable, data$column_variable), margin = 2)```")
             st.write("Overall Percents:  ```\n prop.table(table(data$row_variable, data$column_variable))```")
             st.write("Graphs: Clustered bar chart")
+            st.write("R Code:  ```\n ggplot(data, aes(x = row_variable, fill = column_variable)) + geom_bar(position = \"dodge\")```")
+            st.image('images/Clustered_Bar_Chart.png', caption="Clustered Bar Chart Example", width=200)
             st.write("### Inferential Statistics")
             st.write("Chi-square test")
             st.write("R Code:  ```\n chisq.test(table)```")
