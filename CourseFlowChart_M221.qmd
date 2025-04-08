@@ -1,0 +1,122 @@
+---
+title: "Mapping Math 221"
+author: "Brother Cannon"
+format:
+  html:
+    self-contained: true
+    page-layout: full
+    title-block-banner: true
+    toc: true
+    toc-depth: 3
+    toc-location: body
+    number-sections: false
+    html-math-method: katex
+    code-fold: true
+    code-summary: "Show the code"
+    code-overflow: wrap
+    code-copy: hover
+    code-tools:
+        source: false
+        toggle: true
+        caption: See code
+execute: 
+  warning: false
+    
+---
+
+
+
+
+
+```{python}
+from graphviz import Digraph
+
+```
+
+
+# Version 2
+
+FIRST:  Define the Problem
+
+```{python}
+
+# Create a Digraph object
+dot = Digraph()
+
+# Start node
+dot.node('B', 'What is your Response \n variable?', shape="diamond", style='filled', fillcolor='lightgray')
+dot.edge("B","Q", label="Quantitative")
+dot.edge("B", "C", label="Categorical")
+
+#### Make the Quantitiative Tree
+
+# One-sample T
+dot.node('Q', 'What is your Explanatory \n Variable?', shape="diamond", style='filled', fillcolor='forestgreen')
+
+dot.edge('Q','R',label="None")
+dot.node('R', 'Mean, Median, Mode, \n Standard Deviation, Percentiles\nGraphs: Histogram', shape="rectangle", style='filled', fillcolor='mediumseagreen')
+
+dot.edge('R', 'S', label="Inferential Statistics")
+dot.node('S','One-sample t-test: \n t = (x̄ - μ) / (s / √n) \n CI: x̄ ± t*s/√n',shape="rectangle", style='filled', fillcolor='palegreen')
+
+
+### Categorical X:  2 independent groups, 2 dependent groups, 3 or more
+
+dot.edge('Q','cat',label="Categorical")
+dot.node('cat', 'Grouped Means, Medians, \n Standard Deviations, Percentiles\nGraphs: side-by-side Boxplot', shape="rectangle", style='filled', fillcolor='mediumseagreen')
+
+dot.edge('cat','T', label="Inferential Statistics")
+dot.node('T', 'How Many \n Groups?', shape="diamond", style='filled', fillcolor='mediumseagreen')
+
+# T-2 Independent, T-Dependent, T-more than three
+dot.edge('T', 'dep', label="2 Dependent Groups")
+dot.node('dep', 'Matched Pairs t-test: \n t = (d̄ - μ₀) / (s_d / √n) \n CI: d̄ ± t*s_d/√n', shape="rectangle", style='filled', fillcolor='palegreen')
+
+
+dot.edge('T', 'indep', label="2 Independent Groups")
+dot.node('indep','2-sample t-test: \n t = (x̄₁ - x̄₂) / √((s₁²/n₁) + (s₂²/n₂)) \n CI:  (x̄₁ - x̄₂) ± t*√((s₁²/n₁) + (s₂²/n₂))',shape="rectangle", style='filled', fillcolor='palegreen')
+
+dot.edge('T', 'mult', label=">2 Independent Groups")
+dot.node('mult',label=r'<<b>F-Statistic:</b><br/>F = MST / MSE<br/>MST = SST / (k - 1)<br/>MSE = SSE / (n - k)>', shape='rectangle', style='filled', fillcolor='palegreen')
+
+
+# Simple Linear Regression
+dot.edge('Q', 'SLR_Desc', label="Quantitative")
+dot.node('SLR_Desc', 'Scatter plot, \n geom_smooth()', shape="rectangle", style='filled', fillcolor='mediumseagreen')
+
+dot.edge('SLR_Desc', 'SLR_Infer', label="Inferential Statistics")
+dot.node('SLR_Infer', 'Regression Equation:\n ŷ = b₀ + b₁x\nb₁ = r(sᵧ/sₓ)\nHypothesis Test for Slope:\n t = b₁ / SE(b₁)', shape="rectangle", style='filled', fillcolor='palegreen')
+
+
+###### Create Categorical Branch
+
+dot.node('C', 'What is your Explanatory \n Variable?', shape="diamond", style='filled', fillcolor='royalblue')
+
+
+# 1-Sample Test for Proportions
+dot.edge('C', 'P1_Desc', label="None")
+dot.node('P1_Desc', 'Proportion (p̂)\nGraphs: Bar chart, Pie chart', shape="rectangle", style='filled', fillcolor='steelblue')
+
+dot.edge('P1_Desc', 'P1_Infer', label="Inferential Statistics")
+dot.node('P1_Infer', '1-Sample z-test for proportions:\n z = (p̂ - p₀) / √(p₀(1-p₀)/n)\nCI: p̂ ± z*√(p̂(1-p̂)/n)', shape="rectangle", style='filled', fillcolor='lightblue')
+
+# 2-Sample Test for Proportions
+dot.edge('C', 'P2_Desc', label="2 Groups")
+dot.node('P2_Desc', 'Proportions (p̂₁, p̂₂)\nGraphs: Clustered bar chart', shape="rectangle", style='filled', fillcolor='steelblue')
+
+dot.edge('P2_Desc', 'P2_Infer', label="Inferential Statistics")
+dot.node('P2_Infer', '2-Sample z-test for proportions:\n z = (p̂₁ - p̂₂) / √(p̂(1-p̂)(1/n₁ + 1/n₂))\nCI: (p̂₁ - p̂₂) ± z*√(p̂(1-p̂)(1/n₁ + 1/n₂))', shape="rectangle", style='filled', fillcolor='lightblue')
+
+# Chi-Square Test of Independence
+dot.edge('C', 'Chi_Desc', label="2 Variables")
+dot.node('Chi_Desc', 'Two-way table\nGraphs: Clustered bar chart', shape="rectangle", style='filled', fillcolor='steelblue')
+
+dot.edge('Chi_Desc', 'Chi_Infer', label="Inferential Statistics")
+dot.node('Chi_Infer', 'Chi-Square Test:\n χ² = Σ((O - E)² / E)\nDegrees of Freedom: (r - 1)(c - 1)', shape="rectangle", style='filled', fillcolor='lightblue')
+
+dot.render('statistics_decision_treeV2', format='png', view=True)
+
+```
+
+
+![Statistics Decision Tree V2](statistics_decision_treeV2.png)
