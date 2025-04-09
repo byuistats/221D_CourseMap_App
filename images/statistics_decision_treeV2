@@ -1,5 +1,7 @@
 digraph {
-	"Design the Study"
+	design [label="Design/Review 
+ the Study" shape=rectangle]
+	design -> B
 	B [label="What is your Response 
  variable?" fillcolor=lightgray shape=diamond style=filled]
 	B -> Q [label=Quantitative]
