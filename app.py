@@ -194,7 +194,7 @@ unique(data$category_column)
         ]
     )
 
-    if categorical_filter == "Remove one level of a categorical variable":
+    if categorical_filter == "Remove only one level of a categorical variable":
         st.code("""
 # Remove one level of a categorical variable
 data %>% filter(category_column != "level_to_remove")
