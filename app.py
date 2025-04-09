@@ -26,6 +26,7 @@ with tab1:
             st.write("### Inferential Statistics") 
             st.write("One-sample t-test")
             st.write("R Code: ```\n t.test(value)```")
+            st.image('https://github.com/byuistats/221D_CourseMap_App/raw/main/images/one_sample_t_test_statistic.png', caption="Clustered Bar Chart Example", width=100)
 
         elif explanatory_type_quant == "Categorical":
             st.write("### Descriptive Statistics")
@@ -40,16 +41,21 @@ with tab1:
                 st.write("Paired t-test")
                 st.write("R Code: ```\n t.test(data$value1-data$value2, alternative = \"two.sided\")```")
                 st.write("Matched Pairs t-test")
+                st.image('https://github.com/byuistats/221D_CourseMap_App/raw/main/images/matched_pairs_test_stat.png', caption="Matched Pairs Test Statistic", width=100)
+
             elif how_many_groups == "2 Independent Groups":
                 st.write("### Inferential Statistics")
                 st.write("Independent 2-sample t-test")
                 st.write("2-sample t-test")
                 st.write("R Code: ```\n t.test(value ~ group, data = data)```")
+                st.image('https://github.com/byuistats/221D_CourseMap_App/raw/main/images/two_sample_t_test_statistic.png', caption="2-sample t-test statistic", width=100)
+
             elif how_many_groups == "3+ Independent Groups":
                 st.write("### Inferential Statistics")
                 st.write("ANOVA")
                 st.write("R Code: ```\n aov_output <- aov(value ~ group, data = data) \n summary(aov_output)```")
                 st.write("F-Statistic")
+                st.image('https://github.com/byuistats/221D_CourseMap_App/raw/main/images/F_statistic.png', caption="F-Statistic", width=100)
 
         elif explanatory_type_quant == "Quantitative":
             st.write("### Descriptive Statistics")
