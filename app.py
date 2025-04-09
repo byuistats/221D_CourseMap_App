@@ -19,7 +19,6 @@ with tab1:
 
         if explanatory_type_quant == "None":
             with st.expander("Descriptive Statistics"):
-                st.markdown("<h3><b>Descriptive Statistics</b></h3>", unsafe_allow_html=True)
                 st.write("Mean, Median, Mode, Standard Deviation, Percentiles")
                 st.write("Graph: Histogram")
                 st.image("https://github.com/byuistats/Math221D_Cannon/raw/master/Images/histogramggplotgallery1.png", caption="Histogram Example", width=200)
@@ -34,7 +33,6 @@ with tab1:
                                 theme_bw()""", language="r")
 
             with st.expander("Inferential Statistics"):
-                st.markdown("<h3><b>Inferential Statistics</b></h3>", unsafe_allow_html=True)
                 st.write("One-sample t-test")
                 st.code("""
                         t.test(data$response_variable, mu = mu0, alternative = \"two.sided\")""", language="r")
@@ -77,7 +75,7 @@ with tab1:
                     st.image('https://github.com/byuistats/221D_CourseMap_App/raw/main/images/F_statistic.png.png', caption="F-Statistic", width=210)
 
         elif explanatory_type_quant == "Quantitative":
-            with st.expander("## Descriptive Statistics"):
+            with st.expander("Descriptive Statistics"):
                 st.write("Graph: Scatter plot")
                 st.code("""
                         ggplot(data, aes(x = x, y = y)) + 
@@ -97,54 +95,54 @@ with tab1:
         explanatory_type_cat = st.radio("What is your Explanatory Variable?", ("None", "2 Levels", "Multiple Levels"))
 
         if explanatory_type_cat == "None":
-            st.write("### Descriptive Statistics")
-            st.write("Frequency Table")
-            st.write("Proportion (p)")
-            st.write("Graphs: Bar chart")
-            st.write("### Inferential Statistics")
-            st.write("One-sample proportion test")
-            st.code("""
-                    # One-sample proportion test
-                    # x = number of successes in the sample
-                    # n = sample size
-                    prop.test(x, n, p = p0, alternative = \"two.sided\", conf.level = 0.95)
-                    
-                    # Confidence Interval
-                    prop.test(x,n)$conf.int
-                    """, language="r")
+            with st.expander("Descriptive Statistics"):
+                st.write("Frequency Table")
+                st.write("Proportion (p)")
+                st.write("Graphs: Bar chart")
+            with st.expander("Inferential Statistics"):
+                st.write("One-sample proportion test")
+                st.code("""
+                        # One-sample proportion test
+                        # x = number of successes in the sample
+                        # n = sample size
+                        prop.test(x, n, p = p0, alternative = \"two.sided\", conf.level = 0.95)
+                        
+                        # Confidence Interval
+                        prop.test(x,n)$conf.int
+                        """, language="r")
 
         elif explanatory_type_cat == "2 Levels":
-            st.write("### Descriptive Statistics")
-            st.write("Frequency Table")
-            st.write("Proportions (p1, p2)")
-            st.write("Graphs: Clustered bar chart")
-            st.write("### Inferential Statistics")
-            st.write("Two-sample proportion test")
-            st.code("""
-                    # Two-sample proportion test
-                    # x1 = number of successes in group 1
-                    prop.test(x=c(x1,x2), n=c(n1,n2), alternative = \"two.sided\", conf.level = 0.95)
-                    
-                    # Confidence Interval for difference p1-p2
-                    prop.test(x=c(x1,x2), n=c(n1,n2), conf.level = 0.95)$conf.int
-                    """, language="r")
+            with st.expander("Descriptive Statistics"):
+                st.write("Frequency Table")
+                st.write("Proportions (p1, p2)")
+                st.write("Graphs: Clustered bar chart")
+            with st.expander("Inferential Statistics"):
+                st.write("Two-sample proportion test")
+                st.code("""
+                        # Two-sample proportion test
+                        # x1 = number of successes in group 1
+                        prop.test(x=c(x1,x2), n=c(n1,n2), alternative = \"two.sided\", conf.level = 0.95)
+                        
+                        # Confidence Interval for difference p1-p2
+                        prop.test(x=c(x1,x2), n=c(n1,n2), conf.level = 0.95)$conf.int
+                        """, language="r")
 
         elif explanatory_type_cat == "Multiple Levels":
-            st.write("### ## Descriptive Statistics")
-            st.write("Frequency Table:  ```\n table(data$row_variable, data$column_variable)```")
-            st.write("Row Percents:  ```\n prop.table(table(data$row_variable, data$column_variable), margin = 1)```")
-            st.write("Column Percents:  ```\n prop.table(table(data$row_variable, data$column_variable), margin = 2)```")
-            st.write("Overall Percents:  ```\n prop.table(table(data$row_variable, data$column_variable))```")
-            st.write("Graphs: Clustered bar chart")
-            st.code("""
-                    ggplot(data, aes(x = row_variable, fill = column_variable)) + 
-                        geom_bar(position = \"dodge\")""", language="r")
-            st.image('https://github.com/byuistats/221D_CourseMap_App/raw/main/images/dodged_bar_example.png', caption="Clustered Bar Chart Example", width=200)
-            st.write("### Inferential Statistics")
-            st.write("Chi-square test")
-            st.code("""
-                    tbl <- table(data$row_variable, data$column_variable)
-                    chisq.test(tbl)""", language="r")
+            with st.expander("Descriptive Statistics"):
+                st.write("Frequency Table:  ```\n table(data$row_variable, data$column_variable)```")
+                st.write("Row Percents:  ```\n prop.table(table(data$row_variable, data$column_variable), margin = 1)```")
+                st.write("Column Percents:  ```\n prop.table(table(data$row_variable, data$column_variable), margin = 2)```")
+                st.write("Overall Percents:  ```\n prop.table(table(data$row_variable, data$column_variable))```")
+                st.write("Graphs: Clustered bar chart")
+                st.code("""
+                        ggplot(data, aes(x = row_variable, fill = column_variable)) + 
+                            geom_bar(position = \"dodge\")""", language="r")
+                st.image('https://github.com/byuistats/221D_CourseMap_App/raw/main/images/dodged_bar_example.png', caption="Clustered Bar Chart Example", width=200)
+            with st.expander("Inferential Statistics"):
+                st.write("Chi-square test")
+                st.code("""
+                        tbl <- table(data$row_variable, data$column_variable)
+                        chisq.test(tbl)""", language="r")
 
 # Tab 2: Tidyverse Commands
 with tab2:
