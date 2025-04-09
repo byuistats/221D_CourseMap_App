@@ -139,7 +139,7 @@ with tab1:
             with st.expander("Inferential Statistics"):
                 st.write("Chi-square test")
                 st.image('https://github.com/byuistats/221D_CourseMap_App/raw/main/images/chi2_test_statistic.png', caption="Chi-Square Test Statistic", width=200)
-                st.write("Expected Counts:  Row Totals * Column Totals / Total Sample Size")
+                st.image('https://github.com/byuistats/221D_CourseMap_App/raw/main/images/chi2_expected_counts.png', caption="Chi-Square Test Statistic", width=200)
                 st.code("""
                         tbl <- table(data$row_variable, data$column_variable)
                         chisq.test(tbl)""", language="r")
