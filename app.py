@@ -21,11 +21,13 @@ with tab1:
             st.write("Mean, Median, Mode, Standard Deviation, Percentiles")
             st.write("Graph: Histogram")
             st.image("https://github.com/byuistats/Math221D_Cannon/raw/master/Images/histogramggplotgallery1.png", caption="Histogram Example", width=200)
-            st.code("""summary(data)""", language="r")
-            st.write("""ggplot(data, aes(x = value)) + geom_histogram(binwidth = 1)""", language="r")
+            st.code("""
+                    ggplot(data, aes(x = value)) + 
+                        geom_histogram()""", language="r")
             st.write("### Inferential Statistics") 
             st.write("One-sample t-test")
-            st.code("""t.test(data$response_variable, mu = mu0, alternative = \"two.sided\")""")
+            st.code("""
+                    t.test(data$response_variable, mu = mu0, alternative = \"two.sided\")""", language="r")
             st.image('https://github.com/byuistats/221D_CourseMap_App/raw/main/images/one_sample_t_test_statistic.png', caption="Clustered Bar Chart Example", width=100)
 
         elif explanatory_type_quant == "Categorical":
