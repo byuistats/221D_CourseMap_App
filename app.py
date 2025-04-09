@@ -18,7 +18,7 @@ with tab1:
         explanatory_type_quant = st.radio("What is your Explanatory Variable?", ("None", "Categorical", "Quantitative"))
 
         if explanatory_type_quant == "None":
-            with st.expander("#### Descriptive Statistics"):
+            with st.expander("## Descriptive Statistics"):
                 st.write("Mean, Median, Mode, Standard Deviation, Percentiles")
                 st.write("Graph: Histogram")
                 st.image("https://github.com/byuistats/Math221D_Cannon/raw/master/Images/histogramggplotgallery1.png", caption="Histogram Example", width=200)
@@ -39,7 +39,7 @@ with tab1:
                 st.image('https://github.com/byuistats/221D_CourseMap_App/raw/main/images/one_sample_t_test_statistic.png', caption="One-Sample t-test", width=100)
 
         elif explanatory_type_quant == "Categorical":
-            with st.expander("#### Descriptive Statistics"):
+            with st.expander("## Descriptive Statistics"):
                 st.write("Grouped Means, Medians, Standard Deviations, Percentiles")
                 st.write("Graph: Side-by-side Boxplot")
                 st.code("""
@@ -75,7 +75,7 @@ with tab1:
                     st.image('https://github.com/byuistats/221D_CourseMap_App/raw/main/images/F_statistic.png.png', caption="F-Statistic", width=210)
 
         elif explanatory_type_quant == "Quantitative":
-            with st.expander("#### Descriptive Statistics"):
+            with st.expander("## Descriptive Statistics"):
                 st.write("Graph: Scatter plot")
                 st.code("""
                         ggplot(data, aes(x = x, y = y)) + 
@@ -95,7 +95,7 @@ with tab1:
         explanatory_type_cat = st.radio("What is your Explanatory Variable?", ("None", "2 Levels", "Multiple Levels"))
 
         if explanatory_type_cat == "None":
-            st.write("### #### Descriptive Statistics")
+            st.write("### ## Descriptive Statistics")
             st.write("Frequency Table")
             st.write("Proportion (p)")
             st.write("Graphs: Bar chart")
@@ -112,7 +112,7 @@ with tab1:
                     """, language="r")
 
         elif explanatory_type_cat == "2 Levels":
-            st.write("### #### Descriptive Statistics")
+            st.write("### ## Descriptive Statistics")
             st.write("Frequency Table")
             st.write("Proportions (p1, p2)")
             st.write("Graphs: Clustered bar chart")
@@ -128,7 +128,7 @@ with tab1:
                     """, language="r")
 
         elif explanatory_type_cat == "Multiple Levels":
-            st.write("### #### Descriptive Statistics")
+            st.write("### ## Descriptive Statistics")
             st.write("Frequency Table:  ```\n table(data$row_variable, data$column_variable)```")
             st.write("Row Percents:  ```\n prop.table(table(data$row_variable, data$column_variable), margin = 1)```")
             st.write("Column Percents:  ```\n prop.table(table(data$row_variable, data$column_variable), margin = 2)```")
