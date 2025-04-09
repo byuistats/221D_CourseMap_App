@@ -1,5 +1,6 @@
 import streamlit as st
 
+# Function to apply the selected theme
 def apply_theme(theme):
     if theme == "Dark":
         st.markdown(
@@ -38,9 +39,16 @@ def apply_theme(theme):
 if "theme" not in st.session_state:
     st.session_state["theme"] = "Light"
 
+# Sidebar toggle for theme selection
 theme = st.sidebar.radio("Choose Theme:", ["Light", "Dark"], index=0 if st.session_state["theme"] == "Light" else 1)
+
+# Update the theme in session state
 st.session_state["theme"] = theme
 
+# Apply the selected theme
+apply_theme(st.session_state["theme"])
+
+# Main app content
 st.title("Introductory Statistics Course Map")
 
 # Create tabs
