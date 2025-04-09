@@ -1,53 +1,5 @@
 import streamlit as st
 
-# Function to apply the selected theme
-def apply_theme(theme):
-    if theme == "Dark":
-        st.markdown(
-            """
-            <style>
-            body {
-                background-color: #2E2E2E;
-                color: white;
-            }
-            .stButton>button {
-                background-color: #4CAF50;
-                color: white;
-            }
-            </style>
-            """,
-            unsafe_allow_html=True,
-        )
-    else:
-        st.markdown(
-            """
-            <style>
-            body {
-                background-color: white;
-                color: black;
-            }
-            .stButton>button {
-                background-color: #007BFF;
-                color: white;
-            }
-            </style>
-            """,
-            unsafe_allow_html=True,
-        )
-
-# Add a dark mode toggle
-if "theme" not in st.session_state:
-    st.session_state["theme"] = "Light"
-
-# Sidebar toggle for theme selection
-theme = st.sidebar.radio("Choose Theme:", ["Light", "Dark"], index=0 if st.session_state["theme"] == "Light" else 1)
-
-# Update the theme in session state
-st.session_state["theme"] = theme
-
-# Apply the selected theme
-apply_theme(st.session_state["theme"])
-
 # Main app content
 st.title("Introductory Statistics Course Map")
 
