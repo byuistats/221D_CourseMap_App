@@ -25,21 +25,24 @@ with tab1:
             st.write("R Code: ```\n ggplot(data, aes(x = value)) + geom_histogram(binwidth = 1)```")
             st.write("### Inferential Statistics") 
             st.write("One-sample t-test")
-            st.write("R Code: ```\n t.test(value)```")
+            st.code("""t.test(data$response_variable, mu = mu0, alternative = \"two.sided\")""")
             st.image('https://github.com/byuistats/221D_CourseMap_App/raw/main/images/one_sample_t_test_statistic.png', caption="Clustered Bar Chart Example", width=100)
 
         elif explanatory_type_quant == "Categorical":
             st.write("### Descriptive Statistics")
             st.write("Grouped Means, Medians, Standard Deviations, Percentiles")
             st.write("Graph: Side-by-side Boxplot")
-            st.write("R Code: ```\n ggplot(data, aes(x = group, y = value)) + geom_boxplot()```")
+            st.code("""
+                    ggplot(data, aes(x = group, y = value)) + 
+                        geom_boxplot()""", language="r")
             st.image("https://github.com/byuistats/Math221D_Cannon/raw/master/Images/boxplotggplotgallery1.png", caption="Boxplot Example", width=300)
             how_many_groups = st.radio("How Many Groups?", ("2 Dependent Groups", "2 Independent Groups", "3+ Independent Groups"))
 
             if how_many_groups == "2 Dependent Groups":
                 st.write("### Inferential Statistics")
                 st.write("Paired t-test")
-                st.write("R Code: ```\n t.test(data$value1-data$value2, alternative = \"two.sided\")```")
+                st.code("""
+                        t.test(data$value1-data$value2, alternative = \"two.sided\")""", language="r")
                 st.write("Matched Pairs t-test")
                 st.image('https://github.com/byuistats/221D_CourseMap_App/raw/main/images/matched_pairs_test_stat.png', caption="Matched Pairs Test Statistic", width=100)
 
@@ -47,13 +50,16 @@ with tab1:
                 st.write("### Inferential Statistics")
                 st.write("Independent 2-sample t-test")
                 st.write("2-sample t-test")
-                st.write("R Code: ```\n t.test(value ~ group, data = data)```")
+                st.code("""
+                        t.test(value ~ group, data = data)""", language="r")
                 st.image('https://github.com/byuistats/221D_CourseMap_App/raw/main/images/two_sample_t_test_statistic.png', caption="2-sample t-test statistic", width=100)
 
             elif how_many_groups == "3+ Independent Groups":
                 st.write("### Inferential Statistics")
                 st.write("ANOVA")
-                st.write("R Code: ```\n aov_output <- aov(value ~ group, data = data) \n summary(aov_output)```")
+                st.code("""
+                        aov_output <- aov(value ~ group, data = data)
+                        summary(aov_output)""", language="r")
                 st.write("F-Statistic")
                 st.image('https://github.com/byuistats/221D_CourseMap_App/raw/main/images/F_statistic.png.png', caption="F-Statistic", width=210)
 
@@ -66,7 +72,9 @@ with tab1:
             st.write("R Code:  ```\n cor(data$x, data$y)```")
             st.write("### Inferential Statistics")
             st.write("Simple Linear Regression")
-            st.write("R Code:  ```lm_output <- lm(y ~ x)  \n summary(lm_output)```")
+            st.code("""
+                    lm_output <- lm(y ~ x)
+                    summary(lm_output)""", language="r")
 
     elif response_type == "Categorical":
         explanatory_type_cat = st.radio("What is your Explanatory Variable?", ("None", "2 Levels", "Multiple Levels"))
@@ -87,7 +95,14 @@ with tab1:
             st.write("Graphs: Clustered bar chart")
             st.write("### Inferential Statistics")
             st.write("Two-sample proportion test")
-            st.write("R Code:  ```\n prop.test(x=c(x1,x2), n=c(n1,n2), p = NULL, alternative = \"two.sided\", conf.level = 0.95)```")
+            st.code("""
+                    # Two-sample proportion test
+                    # x1 = number of successes in group 1
+                    prop.test(x=c(x1,x2), n=c(n1,n2), alternative = \"two.sided\", conf.level = 0.95)
+                    
+                    # Confidence Interval for difference p1-p2
+                    prop.test(x=c(x1,x2), n=c(n1,n2), conf.level = 0.95)$conf.int
+                    """, language="r")
 
         elif explanatory_type_cat == "Multiple Levels":
             st.write("### Descriptive Statistics")
@@ -181,22 +196,22 @@ data %>% filter(!category_column %in% c("level1", "level2"))
     quantitative_filter = st.radio(
         "Choose a quantitative filter operation:",
         [
-            "Remove values greater than a specified value",
-            "Remove values less than a specified value",
+            "Keep values greater than a specified value",
+            "Keep values less than a specified value",
             "Keep values within a specified range"
         ]
     )
 
-    if quantitative_filter == "Remove values greater than a specified value":
+    if quantitative_filter == "Keep values greater than a specified value":
         st.code("""
-# Remove values greater than a specified value
+# Keep values greater than a specified value
 library(dplyr)
 data %>% filter(numeric_column >= specified_value)
 """, language="r")
 
-    elif quantitative_filter == "Remove values less than a specified value":
+    elif quantitative_filter == "Keep values less than a specified value":
         st.code("""
-# Remove values less than a specified value
+# Keep values less than a specified value
 library(dplyr)
 data %>% filter(numeric_column <= specified_value)
 """, language="r")
