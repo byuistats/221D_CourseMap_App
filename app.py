@@ -79,7 +79,7 @@ with tab1:
             st.write("### Inferential Statistics")
             st.write("Simple Linear Regression")
             st.code("""
-                    lm_output <- lm(y ~ x)
+                    lm_output <- lm(data$y ~ data$x)
                     summary(lm_output)""", language="r")
 
     elif response_type == "Categorical":
