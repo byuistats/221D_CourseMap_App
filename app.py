@@ -24,7 +24,13 @@ with tab1:
                 st.image("https://github.com/byuistats/Math221D_Cannon/raw/master/Images/histogramggplotgallery1.png", caption="Histogram Example", width=200)
                 st.code("""
                         ggplot(data, aes(x = value)) + 
-                            geom_histogram()""", language="r")
+                            geom_histogram() +
+                            labs(
+                                x = "Temperature",
+                                y = "Number of Days",
+                                title = "La Guardia Airport Daily Mean Temperature"
+                                ) +
+                                theme_bw()""", language="r")
 
             with st.expander("Inferential Statistics"):
                 st.write("One-sample t-test")
