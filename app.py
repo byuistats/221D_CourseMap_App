@@ -47,26 +47,24 @@ with tab1:
                             geom_boxplot()""", language="r")
                 st.image("https://github.com/byuistats/Math221D_Cannon/raw/master/Images/boxplotggplotgallery1.png", caption="Boxplot Example", width=300)
 
-            how_many_groups = st.radio("How Many Groups?", ("2 Dependent Groups", "2 Independent Groups", "3+ Independent Groups"))
+            with st.expander("Inferential Statistics"):
+                how_many_groups = st.radio("How Many Groups?", ("2 Dependent Groups", "2 Independent Groups", "3+ Independent Groups"))
 
-            if how_many_groups == "2 Dependent Groups":
-                with st.expander("Inferential Statistics"):
+                if how_many_groups == "2 Dependent Groups":
                     st.write("Paired t-test")
                     st.code("""
                             t.test(data$value1-data$value2, alternative = \"two.sided\")""", language="r")
                     st.write("Matched Pairs t-test")
                     st.image('https://github.com/byuistats/221D_CourseMap_App/raw/main/images/matched_pairs_test_stat.png', caption="Matched Pairs Test Statistic", width=100)
 
-            elif how_many_groups == "2 Independent Groups":
-                with st.expander("Inferential Statistics"):
+                elif how_many_groups == "2 Independent Groups":
                     st.write("Independent 2-sample t-test")
                     st.write("2-sample t-test")
                     st.code("""
                             t.test(value ~ group, data = data)""", language="r")
                     st.image('https://github.com/byuistats/221D_CourseMap_App/raw/main/images/two_sample_t_test_statistic.png', caption="2-sample t-test statistic", width=100)
 
-            elif how_many_groups == "3+ Independent Groups":
-                with st.expander("Inferential Statistics"):
+                elif how_many_groups == "3+ Independent Groups":
                     st.write("ANOVA")
                     st.code("""
                             aov_output <- aov(value ~ group, data = data)
