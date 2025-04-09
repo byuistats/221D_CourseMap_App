@@ -81,7 +81,7 @@ with tab1:
                         ggplot(data, aes(x = x, y = y)) + 
                             geom_point() + 
                             geom_smooth(method = 'lm')""", language="r")
-                st.image("https://github.com/byuistats/Math221D_Cannon/raw/master/Images/Regression_Line_Example.png", caption="Boxplot Example", width=200)
+                st.image("https://github.com/byuistats/Math221D_Cannon/raw/master/Images/Regression_Line_Example.png", caption="Scatterplot Example", width=200)
                 st.write("Correlation Coefficient (r)")
                 st.code("""cor(data$x, data$y)""", language="r")
 
@@ -146,11 +146,11 @@ with tab1:
 
 # Tab 2: Tidyverse Commands
 with tab2:
-    st.write("### Tidyverse Commands for Data Wrangling")
+    st.write("## Tidyverse Commands for Data Wrangling")
     st.write("Use the options below to generate R commands for wrangling your data.")
     
     # Subsection: Data Exploration
-    st.write("#### Data Exploration")
+    st.write("### Data Exploration")
     data_exploration = st.radio(
         "Choose a data exploration operation:",
         [
@@ -176,14 +176,14 @@ unique(data$category_column)
 """, language="r")
         
             
-    st.write("#### Removing Rows")
+    st.write("### Removing Rows")
 
     # Categorical Filters
     st.write("#### Categorical Filters")
     categorical_filter = st.radio(
         "Choose a categorical filter operation:",
         [
-            "Remove one level of a categorical variable",
+            "Remove only one level of a categorical variable",
             "Keep only one level of a categorical variable",
             "Keep specified levels of a categorical variable",
             "Remove specified levels of a categorical variable"
