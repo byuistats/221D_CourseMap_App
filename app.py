@@ -1,5 +1,46 @@
 import streamlit as st
 
+def apply_theme(theme):
+    if theme == "Dark":
+        st.markdown(
+            """
+            <style>
+            body {
+                background-color: #2E2E2E;
+                color: white;
+            }
+            .stButton>button {
+                background-color: #4CAF50;
+                color: white;
+            }
+            </style>
+            """,
+            unsafe_allow_html=True,
+        )
+    else:
+        st.markdown(
+            """
+            <style>
+            body {
+                background-color: white;
+                color: black;
+            }
+            .stButton>button {
+                background-color: #007BFF;
+                color: white;
+            }
+            </style>
+            """,
+            unsafe_allow_html=True,
+        )
+
+# Add a dark mode toggle
+if "theme" not in st.session_state:
+    st.session_state["theme"] = "Light"
+
+theme = st.sidebar.radio("Choose Theme:", ["Light", "Dark"], index=0 if st.session_state["theme"] == "Light" else 1)
+st.session_state["theme"] = theme
+
 st.title("Introductory Statistics Course Map")
 
 # Create tabs
