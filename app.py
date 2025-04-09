@@ -95,24 +95,27 @@ with tab1:
         explanatory_type_cat = st.radio("What is your Explanatory Variable?", ("None", "2 Levels", "Multiple Levels"))
 
         if explanatory_type_cat == "None":
-            st.write("### ## Descriptive Statistics")
-            st.write("Frequency Table")
-            st.write("Proportion (p)")
-            st.write("Graphs: Bar chart")
-            st.write("### Inferential Statistics")
-            st.write("One-sample proportion test")
-            st.code("""
-                    # One-sample proportion test
-                    # x = number of successes in the sample
-                    # n = sample size
-                    prop.test(x, n, p = p0, alternative = \"two.sided\", conf.level = 0.95)
-                    
-                    # Confidence Interval
-                    prop.test(x,n)$conf.int
-                    """, language="r")
+            with st.expander("Descriptive Statistics"):
+                st.markdown("<h3><b>Descriptive Statistics</b></h3>", unsafe_allow_html=True)
+                st.write("Frequency Table")
+                st.write("Proportion (p)")
+                st.write("Graphs: Bar chart")
+
+            with st.expander("Inferential Statistics"):
+                st.markdown("<h3><b>Inferential Statistics</b></h3>", unsafe_allow_html=True)
+                st.write("One-sample proportion test")
+                st.code("""
+                        # One-sample proportion test
+                        # x = number of successes in the sample
+                        # n = sample size
+                        prop.test(x, n, p = p0, alternative = \"two.sided\", conf.level = 0.95)
+                        
+                        # Confidence Interval
+                        prop.test(x,n)$conf.int
+                        """, language="r")
 
         elif explanatory_type_cat == "2 Levels":
-            st.write("### ## Descriptive Statistics")
+            st.write("Descriptive Statistics")
             st.write("Frequency Table")
             st.write("Proportions (p1, p2)")
             st.write("Graphs: Clustered bar chart")
@@ -128,7 +131,7 @@ with tab1:
                     """, language="r")
 
         elif explanatory_type_cat == "Multiple Levels":
-            st.write("### ## Descriptive Statistics")
+            st.write("Descriptive Statistics")
             st.write("Frequency Table:  ```\n table(data$row_variable, data$column_variable)```")
             st.write("Row Percents:  ```\n prop.table(table(data$row_variable, data$column_variable), margin = 1)```")
             st.write("Column Percents:  ```\n prop.table(table(data$row_variable, data$column_variable), margin = 2)```")
