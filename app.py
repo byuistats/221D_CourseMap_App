@@ -18,69 +18,72 @@ with tab1:
         explanatory_type_quant = st.radio("What is your Explanatory Variable?", ("None", "Categorical", "Quantitative"))
 
         if explanatory_type_quant == "None":
-            st.write("### Descriptive Statistics")
-            st.write("Mean, Median, Mode, Standard Deviation, Percentiles")
-            st.write("Graph: Histogram")
-            st.image("https://github.com/byuistats/Math221D_Cannon/raw/master/Images/histogramggplotgallery1.png", caption="Histogram Example", width=200)
-            st.code("""
-                    ggplot(data, aes(x = value)) + 
-                        geom_histogram()""", language="r")
-            st.write("### Inferential Statistics") 
-            st.write("One-sample t-test")
-            st.code("""
-                    t.test(data$response_variable, mu = mu0, alternative = \"two.sided\")""", language="r")
-            st.image('https://github.com/byuistats/221D_CourseMap_App/raw/main/images/one_sample_t_test_statistic.png', caption="Clustered Bar Chart Example", width=100)
+            with st.expander("Descriptive Statistics"):
+                st.write("Mean, Median, Mode, Standard Deviation, Percentiles")
+                st.write("Graph: Histogram")
+                st.image("https://github.com/byuistats/Math221D_Cannon/raw/master/Images/histogramggplotgallery1.png", caption="Histogram Example", width=200)
+                st.code("""
+                        ggplot(data, aes(x = value)) + 
+                            geom_histogram()""", language="r")
+
+            with st.expander("Inferential Statistics"):
+                st.write("One-sample t-test")
+                st.code("""
+                        t.test(data$response_variable, mu = mu0, alternative = \"two.sided\")""", language="r")
+                st.image('https://github.com/byuistats/221D_CourseMap_App/raw/main/images/one_sample_t_test_statistic.png', caption="Clustered Bar Chart Example", width=100)
 
         elif explanatory_type_quant == "Categorical":
-            st.write("### Descriptive Statistics")
-            st.write("Grouped Means, Medians, Standard Deviations, Percentiles")
-            st.write("Graph: Side-by-side Boxplot")
-            st.code("""
-                    ggplot(data, aes(x = group, y = value)) + 
-                        geom_boxplot()""", language="r")
-            st.image("https://github.com/byuistats/Math221D_Cannon/raw/master/Images/boxplotggplotgallery1.png", caption="Boxplot Example", width=300)
+            with st.expander("Descriptive Statistics"):
+                st.write("Grouped Means, Medians, Standard Deviations, Percentiles")
+                st.write("Graph: Side-by-side Boxplot")
+                st.code("""
+                        ggplot(data, aes(x = group, y = value)) + 
+                            geom_boxplot()""", language="r")
+                st.image("https://github.com/byuistats/Math221D_Cannon/raw/master/Images/boxplotggplotgallery1.png", caption="Boxplot Example", width=300)
+
             how_many_groups = st.radio("How Many Groups?", ("2 Dependent Groups", "2 Independent Groups", "3+ Independent Groups"))
 
             if how_many_groups == "2 Dependent Groups":
-                st.write("### Inferential Statistics")
-                st.write("Paired t-test")
-                st.code("""
-                        t.test(data$value1-data$value2, alternative = \"two.sided\")""", language="r")
-                st.write("Matched Pairs t-test")
-                st.image('https://github.com/byuistats/221D_CourseMap_App/raw/main/images/matched_pairs_test_stat.png', caption="Matched Pairs Test Statistic", width=100)
+                with st.expander("Inferential Statistics"):
+                    st.write("Paired t-test")
+                    st.code("""
+                            t.test(data$value1-data$value2, alternative = \"two.sided\")""", language="r")
+                    st.write("Matched Pairs t-test")
+                    st.image('https://github.com/byuistats/221D_CourseMap_App/raw/main/images/matched_pairs_test_stat.png', caption="Matched Pairs Test Statistic", width=100)
 
             elif how_many_groups == "2 Independent Groups":
-                st.write("### Inferential Statistics")
-                st.write("Independent 2-sample t-test")
-                st.write("2-sample t-test")
-                st.code("""
-                        t.test(value ~ group, data = data)""", language="r")
-                st.image('https://github.com/byuistats/221D_CourseMap_App/raw/main/images/two_sample_t_test_statistic.png', caption="2-sample t-test statistic", width=100)
+                with st.expander("Inferential Statistics"):
+                    st.write("Independent 2-sample t-test")
+                    st.write("2-sample t-test")
+                    st.code("""
+                            t.test(value ~ group, data = data)""", language="r")
+                    st.image('https://github.com/byuistats/221D_CourseMap_App/raw/main/images/two_sample_t_test_statistic.png', caption="2-sample t-test statistic", width=100)
 
             elif how_many_groups == "3+ Independent Groups":
-                st.write("### Inferential Statistics")
-                st.write("ANOVA")
-                st.code("""
-                        aov_output <- aov(value ~ group, data = data)
-                        summary(aov_output)""", language="r")
-                st.write("F-Statistic")
-                st.image('https://github.com/byuistats/221D_CourseMap_App/raw/main/images/F_statistic.png.png', caption="F-Statistic", width=210)
+                with st.expander("Inferential Statistics"):
+                    st.write("ANOVA")
+                    st.code("""
+                            aov_output <- aov(value ~ group, data = data)
+                            summary(aov_output)""", language="r")
+                    st.write("F-Statistic")
+                    st.image('https://github.com/byuistats/221D_CourseMap_App/raw/main/images/F_statistic.png.png', caption="F-Statistic", width=210)
 
         elif explanatory_type_quant == "Quantitative":
-            st.write("### Descriptive Statistics")
-            st.write("Graph: Scatter plot")
-            st.code("""
-                    ggplot(data, aes(x = x, y = y)) + 
-                        geom_point() + 
-                        geom_smooth(method = 'lm')""", language="r")
-            st.image("https://github.com/byuistats/Math221D_Cannon/raw/master/Images/Regression_Line_Example.png", caption="Boxplot Example", width=200)
-            st.write("Correlation Coefficient (r)")
-            st.code("""cor(data$x, data$y)""", language="r")
-            st.write("### Inferential Statistics")
-            st.write("Simple Linear Regression")
-            st.code("""
-                    lm_output <- lm(data$y ~ data$x)
-                    summary(lm_output)""", language="r")
+            with st.expander("Descriptive Statistics"):
+                st.write("Graph: Scatter plot")
+                st.code("""
+                        ggplot(data, aes(x = x, y = y)) + 
+                            geom_point() + 
+                            geom_smooth(method = 'lm')""", language="r")
+                st.image("https://github.com/byuistats/Math221D_Cannon/raw/master/Images/Regression_Line_Example.png", caption="Boxplot Example", width=200)
+                st.write("Correlation Coefficient (r)")
+                st.code("""cor(data$x, data$y)""", language="r")
+
+            with st.expander("Inferential Statistics"):
+                st.write("Simple Linear Regression")
+                st.code("""
+                        lm_output <- lm(data$y ~ data$x)
+                        summary(lm_output)""", language="r")
 
     elif response_type == "Categorical":
         explanatory_type_cat = st.radio("What is your Explanatory Variable?", ("None", "2 Levels", "Multiple Levels"))
