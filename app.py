@@ -91,7 +91,7 @@ with tab1:
             st.write("Overall Percents:  ```\n prop.table(table(data$row_variable, data$column_variable))```")
             st.write("Graphs: Clustered bar chart")
             st.write("R Code:  ```\n ggplot(data, aes(x = row_variable, fill = column_variable)) + geom_bar(position = \"dodge\")```")
-            st.image('https://github.com/byuistats/221D_CourseMap_App/raw/main/images/dodged_bar_example.png', caption="Clustered Bar Chart Example", width=400)
+            st.image('https://github.com/byuistats/221D_CourseMap_App/raw/main/images/dodged_bar_example.png', caption="Clustered Bar Chart Example", width=200)
             st.write("### Inferential Statistics")
             st.write("Chi-square test")
             st.write("R Code:  ```\n chisq.test(table)```")
