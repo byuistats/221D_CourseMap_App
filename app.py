@@ -21,8 +21,8 @@ with tab1:
             st.write("Mean, Median, Mode, Standard Deviation, Percentiles")
             st.write("Graph: Histogram")
             st.image("https://github.com/byuistats/Math221D_Cannon/raw/master/Images/histogramggplotgallery1.png", caption="Histogram Example", width=200)
-            st.write("R Code: ```\n summary(data)```")
-            st.write("R Code: ```\n ggplot(data, aes(x = value)) + geom_histogram(binwidth = 1)```")
+            st.code("""summary(data)""", language="r")
+            st.write("""ggplot(data, aes(x = value)) + geom_histogram(binwidth = 1)""", language="r")
             st.write("### Inferential Statistics") 
             st.write("One-sample t-test")
             st.code("""t.test(data$response_variable, mu = mu0, alternative = \"two.sided\")""")
@@ -65,11 +65,14 @@ with tab1:
 
         elif explanatory_type_quant == "Quantitative":
             st.write("### Descriptive Statistics")
-            st.write("Graph: Scatter plot, geom_smooth(method = 'lm')")
-            st.write("R Code: ```\n ggplot(data, aes(x = x, y = y)) + geom_point() + geom_smooth(method = 'lm')```")
+            st.write("Graph: Scatter plot")
+            st.code("""
+                    ggplot(data, aes(x = x, y = y)) + 
+                        geom_point() + 
+                        geom_smooth(method = 'lm')""", language="r")
             st.image("https://github.com/byuistats/Math221D_Cannon/raw/master/Images/Regression_Line_Example.png", caption="Boxplot Example", width=200)
             st.write("Correlation Coefficient (r)")
-            st.write("R Code:  ```\n cor(data$x, data$y)```")
+            st.code("""cor(data$x, data$y)""", language="r")
             st.write("### Inferential Statistics")
             st.write("Simple Linear Regression")
             st.code("""
@@ -86,7 +89,15 @@ with tab1:
             st.write("Graphs: Bar chart")
             st.write("### Inferential Statistics")
             st.write("One-sample proportion test")
-            st.write("R Code:  ```\n prop.test(x, n, p = NULL, alternative = \"two.sided\", conf.level = 0.95)```")
+            st.code("""
+                    # One-sample proportion test
+                    # x = number of successes in the sample
+                    # n = sample size
+                    prop.test(x, n, p = p0, alternative = \"two.sided\", conf.level = 0.95)
+                    
+                    # Confidence Interval
+                    prop.test(x,n)$conf.int
+                    """, language="r")
 
         elif explanatory_type_cat == "2 Levels":
             st.write("### Descriptive Statistics")
@@ -111,11 +122,15 @@ with tab1:
             st.write("Column Percents:  ```\n prop.table(table(data$row_variable, data$column_variable), margin = 2)```")
             st.write("Overall Percents:  ```\n prop.table(table(data$row_variable, data$column_variable))```")
             st.write("Graphs: Clustered bar chart")
-            st.write("R Code:  ```\n ggplot(data, aes(x = row_variable, fill = column_variable)) + geom_bar(position = \"dodge\")```")
+            st.code("""
+                    ggplot(data, aes(x = row_variable, fill = column_variable)) + 
+                        geom_bar(position = \"dodge\")""", language="r")
             st.image('https://github.com/byuistats/221D_CourseMap_App/raw/main/images/dodged_bar_example.png', caption="Clustered Bar Chart Example", width=200)
             st.write("### Inferential Statistics")
             st.write("Chi-square test")
-            st.write("R Code:  ```\n chisq.test(table)```")
+            st.code("""
+                    tbl <- table(data$row_variable, data$column_variable)
+                    chisq.test(tbl)""", language="r")
 
 # Tab 2: Tidyverse Commands
 with tab2:
@@ -166,28 +181,24 @@ unique(data$category_column)
     if categorical_filter == "Remove one level of a categorical variable":
         st.code("""
 # Remove one level of a categorical variable
-library(dplyr)
 data %>% filter(category_column != "level_to_remove")
 """, language="r")
 
     elif categorical_filter == "Keep only one level of a categorical variable":
         st.code("""
 # Keep only one level of a categorical variable
-library(dplyr)
 data %>% filter(category_column == "level_to_keep")
 """, language="r")
 
     elif categorical_filter == "Keep specified levels of a categorical variable":
         st.code("""
 # Keep specified levels of a categorical variable
-library(dplyr)
 data %>% filter(category_column %in% c("level1", "level2"))
 """, language="r")
 
     elif categorical_filter == "Remove specified levels of a categorical variable":
         st.code("""
 # Remove specified levels of a categorical variable
-library(dplyr)
 data %>% filter(!category_column %in% c("level1", "level2"))
 """, language="r")
 
@@ -205,21 +216,18 @@ data %>% filter(!category_column %in% c("level1", "level2"))
     if quantitative_filter == "Keep values greater than a specified value":
         st.code("""
 # Keep values greater than a specified value
-library(dplyr)
 data %>% filter(numeric_column >= specified_value)
 """, language="r")
 
     elif quantitative_filter == "Keep values less than a specified value":
         st.code("""
 # Keep values less than a specified value
-library(dplyr)
 data %>% filter(numeric_column <= specified_value)
 """, language="r")
 
     elif quantitative_filter == "Keep values within a specified range":
         st.code("""
 # Keep values within a specified range
-library(dplyr)
 data %>% filter(numeric_column >= lower_bound,
                 numeric_column <= upper_bound)
 """, language="r")
