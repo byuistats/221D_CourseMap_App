@@ -30,7 +30,7 @@ with tab1:
                 st.write("One-sample t-test")
                 st.code("""
                         t.test(data$response_variable, mu = mu0, alternative = \"two.sided\")""", language="r")
-                st.image('https://github.com/byuistats/221D_CourseMap_App/raw/main/images/one_sample_t_test_statistic.png', caption="Clustered Bar Chart Example", width=100)
+                st.image('https://github.com/byuistats/221D_CourseMap_App/raw/main/images/one_sample_t_test_statistic.png', caption="One-Sample t-test", width=100)
 
         elif explanatory_type_quant == "Categorical":
             with st.expander("Descriptive Statistics"):
