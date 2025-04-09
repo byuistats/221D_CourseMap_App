@@ -44,6 +44,7 @@ FIRST:  Define the Problem
 dot = Digraph()
 
 # Start node
+dot.node("Design the Study")
 dot.node('B', 'What is your Response \n variable?', shape="diamond", style='filled', fillcolor='lightgray')
 dot.edge("B","Q", label="Quantitative")
 dot.edge("B", "C", label="Categorical")
@@ -77,7 +78,7 @@ dot.edge('T', 'indep', label="2 Independent Groups")
 dot.node('indep','2-sample t-test: \n t = (x̄₁ - x̄₂) / √((s₁²/n₁) + (s₂²/n₂)) \n CI:  (x̄₁ - x̄₂) ± t*√((s₁²/n₁) + (s₂²/n₂))',shape="rectangle", style='filled', fillcolor='palegreen')
 
 dot.edge('T', 'mult', label=">2 Independent Groups")
-dot.node('mult',label=r'<<b>F-Statistic:</b><br/>F = MST / MSE<br/>MST = SST / (k - 1)<br/>MSE = SSE / (n - k)>', shape='rectangle', style='filled', fillcolor='palegreen')
+dot.node('mult',label=r'<<b>ANOVA:</b><br/>F = MST / MSE<br/>MST = SST / (k - 1)<br/>MSE = SSE / (n - k)>', shape='rectangle', style='filled', fillcolor='palegreen')
 
 
 # Simple Linear Regression
@@ -114,7 +115,7 @@ dot.node('Chi_Desc', 'Two-way table\nGraphs: Clustered bar chart', shape="rectan
 dot.edge('Chi_Desc', 'Chi_Infer', label="Inferential Statistics")
 dot.node('Chi_Infer', 'Chi-Square Test:\n χ² = Σ((O - E)² / E)\nDegrees of Freedom: (r - 1)(c - 1)', shape="rectangle", style='filled', fillcolor='lightblue')
 
-dot.render('statistics_decision_treeV2', format='png', view=True)
+dot.render('images\statistics_decision_treeV2', format='png', view=True)
 
 ```
 
