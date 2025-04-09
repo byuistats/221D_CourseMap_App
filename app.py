@@ -138,9 +138,15 @@ with tab1:
                 st.image('https://github.com/byuistats/221D_CourseMap_App/raw/main/images/dodged_bar_example.png', caption="Clustered Bar Chart Example", width=200)
             with st.expander("Inferential Statistics"):
                 st.write("Chi-square test")
+                st.image('https://github.com/byuistats/221D_CourseMap_App/raw/main/images/chi2_test_statistic.png', caption="Chi-Square Test Statistic", width=200)
+                st.write("Expected Counts:  Row Totals * Column Totals / Total Sample Size")
                 st.code("""
                         tbl <- table(data$row_variable, data$column_variable)
                         chisq.test(tbl)""", language="r")
+                st.code("""
+                        # Check test requirements counts: 
+                        chisq.test(tbl)$expected >= 5
+                        """, language="r")
 
 # Tab 2: Tidyverse Commands
 with tab2:
