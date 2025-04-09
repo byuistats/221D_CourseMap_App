@@ -55,7 +55,7 @@ with tab1:
                 st.write("ANOVA")
                 st.write("R Code: ```\n aov_output <- aov(value ~ group, data = data) \n summary(aov_output)```")
                 st.write("F-Statistic")
-                st.image('https://github.com/byuistats/221D_CourseMap_App/raw/main/images/F_statistic.png', caption="F-Statistic", width=100)
+                st.image('https://github.com/byuistats/221D_CourseMap_App/raw/main/images/F_statistic.png.png', caption="F-Statistic", width=100)
 
         elif explanatory_type_quant == "Quantitative":
             st.write("### Descriptive Statistics")
