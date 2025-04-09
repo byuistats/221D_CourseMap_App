@@ -44,15 +44,16 @@ FIRST:  Define the Problem
 dot = Digraph()
 
 # Start node
-dot.node("Design the Study")
-dot.node('B', 'What is your Response \n variable?', shape="diamond", style='filled', fillcolor='lightgray')
+dot.node("design", "Design/Review \n the Study", shape="rectangle")
+dot.edge("design", "B")
+dot.node('B', 'What is the Response \n variable?', shape="diamond", style='filled', fillcolor='lightgray')
 dot.edge("B","Q", label="Quantitative")
 dot.edge("B", "C", label="Categorical")
 
 #### Make the Quantitiative Tree
 
 # One-sample T
-dot.node('Q', 'What is your Explanatory \n Variable?', shape="diamond", style='filled', fillcolor='forestgreen')
+dot.node('Q', 'What is the Explanatory \n Variable?', shape="diamond", style='filled', fillcolor='forestgreen')
 
 dot.edge('Q','R',label="None")
 dot.node('R', 'Mean, Median, Mode, \n Standard Deviation, Percentiles\nGraphs: Histogram', shape="rectangle", style='filled', fillcolor='mediumseagreen')
@@ -91,7 +92,7 @@ dot.node('SLR_Infer', 'Regression Equation:\n ŷ = b₀ + b₁x\nb₁ = r(sᵧ/
 
 ###### Create Categorical Branch
 
-dot.node('C', 'What is your Explanatory \n Variable?', shape="diamond", style='filled', fillcolor='royalblue')
+dot.node('C', 'What is the Explanatory \n Variable?', shape="diamond", style='filled', fillcolor='royalblue')
 
 
 # 1-Sample Test for Proportions
