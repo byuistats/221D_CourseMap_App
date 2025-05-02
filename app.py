@@ -97,6 +97,38 @@ with tab1:
                 st.write("Frequency Table")
                 st.write("Proportion (p)")
                 st.write("Graphs: Bar chart")
+                st.code("""
+                        ggplot(data, aes(x = Most_Used_Social_Media)) +
+                            geom_bar() +
+                            theme_bw() +
+                            labs(
+                                y = "",
+                                x = "Count",
+                                title = "Most Used Social Media"
+                            )""", language="r")
+                st.image('https://github.com/byuistats/221D_CourseMap_App/raw/main/images/Social_Media_Graph1.png', caption="Bar Chart Example", width=200)
+                st.code("""
+                        ggplot(data, aes(y = fct_infreq(Most_Used_Social_Media))) +
+                            geom_bar() +
+                            theme_bw() +
+                            labs(
+                                y = "",
+                                x = "Count",
+                                title = "Most Used Social Media"
+                            )""", language="r")
+                st.image('https://github.com/byuistats/221D_CourseMap_App/raw/main/images/Social_Media_Graph2.png', caption="Bar Chart Example", width=200)
+                st.code("""
+                        ggplot(data, aes(y = fct_rev(fct_infreq(Most_Used_Social_Media)))) +
+                            geom_bar() +
+                            theme_bw() +
+                            labs(
+                                y = "",
+                                x = "Count",
+                                title = "Most Used Social Media"
+                            )""", language="r")
+                st.image('https://github.com/byuistats/221D_CourseMap_App/raw/main/images/Social_Media_Graph3.png', caption="Bar Chart Example", width=200)
+
+
             with st.expander("Inferential Statistics"):
                 st.write("One-sample proportion test")
                 st.code("""
