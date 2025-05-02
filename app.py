@@ -99,7 +99,15 @@ with tab1:
         if explanatory_type_cat == "None":
             with st.expander("Descriptive Statistics"):
                 st.write("Frequency Table")
+                st.code("""
+                        # Frequency Table
+                        table(data$Most_Used_Social_Media)
+                        """, language="r")
                 st.write("Proportion (p)")
+                st.code("""
+                        # Proportion (p)
+                        prop.table(table(data$Most_Used_Social_Media))
+                        """, language="r")
                 st.write("Graphs: Bar chart")
                 st.code("""
                         ggplot(data, aes(x = Most_Used_Social_Media)) +
@@ -148,7 +156,19 @@ with tab1:
         elif explanatory_type_cat == "2 Levels":
             with st.expander("Descriptive Statistics"):
                 st.write("Frequency Table")
+                st.code("""
+                        # Frequency Table
+                        table(data$Most_Used_Social_Media, data$Biosex)
+                        """, language="r")
                 st.write("Proportions (p1, p2)")
+                st.code("""
+                        # x1 = number of successes in group 1
+                        # x2 = number of successes in group 2
+                        # n1 = sample size in group 1
+                        # n2 = sample size in group 2
+                        phat1 <- x1/n1
+                        phat2 <- x2/n2
+                        """, language="r")
                 st.write("Graphs: Clustered bar chart")
                 st.code("""
                         ggplot(two_cat_dat, aes(y = Most_Used_Social_Media, fill=Biosex)) +
@@ -185,10 +205,22 @@ with tab1:
                 
         elif explanatory_type_cat == "Multiple Levels":
             with st.expander("Descriptive Statistics"):
-                st.write("Frequency Table:  ```\n table(data$row_variable, data$column_variable)```")
-                st.write("Row Percents:  ```\n prop.table(table(data$row_variable, data$column_variable), margin = 1)```")
-                st.write("Column Percents:  ```\n prop.table(table(data$row_variable, data$column_variable), margin = 2)```")
-                st.write("Overall Percents:  ```\n prop.table(table(data$row_variable, data$column_variable))```")
+                st.write("Frequency Table:")
+                st.code("""
+                        table(data$row_variable, data$column_variable)
+                        """, language="r")
+                st.write("Row Percents:")
+                st.code("""
+                        prop.table(table(data$row_variable, data$column_variable), margin = 1)
+                        """, language="r")
+                st.write("Column Percents:")
+                st.code("""
+                        prop.table(table(data$row_variable, data$column_variable), margin = 2)
+                        """, language="r")
+                st.write("Overall Percents:")
+                st.code("""
+                        prop.table(table(data$row_variable, data$column_variable))
+                        """, language="r")
                 st.write("Graphs: Clustered bar chart")
                 st.code("""
                         ggplot(data, aes(x = row_variable, fill = column_variable)) + 
