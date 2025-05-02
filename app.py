@@ -41,6 +41,10 @@ with tab1:
         elif explanatory_type_quant == "Categorical":
             with st.expander("Descriptive Statistics"):
                 st.write("Grouped Means, Medians, Standard Deviations, Percentiles")
+                st.code("""
+                        library(mosaic)
+                        favstats(data$value ~ data$group)
+                        """, language="r")
                 st.write("Graph: Side-by-side Boxplot")
                 st.code("""
                         ggplot(data, aes(x = group, y = value)) + 
