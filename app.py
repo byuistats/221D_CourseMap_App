@@ -147,7 +147,7 @@ with tab1:
                 st.write("Proportions (p1, p2)")
                 st.write("Graphs: Clustered bar chart")
                 st.code("""
-                        ggplot(two_cat_dat, aes(x = Most_Used_Social_Media, fill=Biosex)) +
+                        ggplot(two_cat_dat, aes(y = Most_Used_Social_Media, fill=Biosex)) +
                             geom_bar(position=\"dodge\") +
                             theme_bw() +
                             labs(
