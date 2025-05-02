@@ -114,16 +114,6 @@ with tab1:
                 st.write("Frequency Table")
                 st.write("Proportions (p1, p2)")
                 st.write("Graphs: Clustered bar chart")
-            with st.expander("Inferential Statistics"):
-                st.write("Two-sample proportion test")
-                st.code("""
-                        # Two-sample proportion test
-                        # x1 = number of successes in group 1
-                        prop.test(x=c(x1,x2), n=c(n1,n2), alternative = \"two.sided\", conf.level = 0.95)
-                        
-                        # Confidence Interval for difference p1-p2
-                        prop.test(x=c(x1,x2), n=c(n1,n2), conf.level = 0.95)$conf.int
-                        """, language="r")
                 st.code("""
                         ggplot(two_cat_dat, aes(x = Most_Used_Social_Media, fill=Biosex)) +
                             geom_bar(position=\"dodge\") +
@@ -134,7 +124,29 @@ with tab1:
                             title = "Social Media Use by Biosex"
   )""", language="r")
                 st.image('https://github.com/byuistats/221D_CourseMap_App/raw/main/images/Two_Sample_Categorical_Chart.png', caption="Clustered Bar Chart Example", width=200)
+                st.code("""
+                        ggplot(two_cat_dat, aes(fill = Most_Used_Social_Media, x=Biosex)) +
+                            geom_bar(position=\"dodge\") +
+                            theme_bw() +
+                            labs(
+                                x = "Most Used Social Media",
+                                y = "Count",
+                            title = "Social Media Use by Biosex"
+  )""", language="r")
+                st.image('https://github.com/byuistats/221D_CourseMap_App/raw/main/images/Two_Sample_Categorical_Chart2.png', caption="Clustered Bar Chart Example", width=200)
 
+
+            with st.expander("Inferential Statistics"):
+                st.write("Two-sample proportion test")
+                st.code("""
+                        # Two-sample proportion test
+                        # x1 = number of successes in group 1
+                        prop.test(x=c(x1,x2), n=c(n1,n2), alternative = \"two.sided\", conf.level = 0.95)
+                        
+                        # Confidence Interval for difference p1-p2
+                        prop.test(x=c(x1,x2), n=c(n1,n2), conf.level = 0.95)$conf.int
+                        """, language="r")
+                
         elif explanatory_type_cat == "Multiple Levels":
             with st.expander("Descriptive Statistics"):
                 st.write("Frequency Table:  ```\n table(data$row_variable, data$column_variable)```")
