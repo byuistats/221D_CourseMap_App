@@ -124,6 +124,16 @@ with tab1:
                         # Confidence Interval for difference p1-p2
                         prop.test(x=c(x1,x2), n=c(n1,n2), conf.level = 0.95)$conf.int
                         """, language="r")
+                st.code("""
+                        ggplot(two_cat_dat, aes(x = Most_Used_Social_Media, fill=Biosex)) +
+                            geom_bar(position=\"dodge\") +
+                            theme_bw() +
+                            labs(
+                                x = "Most Used Social Media",
+                                y = "Count",
+                            title = "Social Media Use by Biosex"
+  )""", language="r")
+                st.image('https://github.com/byuistats/221D_CourseMap_App/raw/main/images/Two_Sample_Categorical_Chart.png', caption="Clustered Bar Chart Example", width=200)
 
         elif explanatory_type_cat == "Multiple Levels":
             with st.expander("Descriptive Statistics"):
