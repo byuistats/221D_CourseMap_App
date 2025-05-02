@@ -106,7 +106,7 @@ with tab1:
                                 x = "Count",
                                 title = "Most Used Social Media"
                             )""", language="r")
-                st.image('https://github.com/byuistats/221D_CourseMap_App/raw/main/images/Social_Media_Graph1.png', caption="Bar Chart Example", width=200)
+                st.image('https://github.com/byuistats/221D_CourseMap_App/raw/main/images/Social_Media_Graph1.png', caption="Bar Chart Example", width=400)
                 st.code("""
                         ggplot(data, aes(y = fct_infreq(Most_Used_Social_Media))) +
                             geom_bar() +
@@ -116,7 +116,7 @@ with tab1:
                                 x = "Count",
                                 title = "Most Used Social Media"
                             )""", language="r")
-                st.image('https://github.com/byuistats/221D_CourseMap_App/raw/main/images/Social_Media_Graph2.png', caption="Bar Chart Example", width=200)
+                st.image('https://github.com/byuistats/221D_CourseMap_App/raw/main/images/Social_Media_Graph2.png', caption="Bar Chart Example", width=400)
                 st.code("""
                         ggplot(data, aes(y = fct_rev(fct_infreq(Most_Used_Social_Media)))) +
                             geom_bar() +
@@ -126,7 +126,7 @@ with tab1:
                                 x = "Count",
                                 title = "Most Used Social Media"
                             )""", language="r")
-                st.image('https://github.com/byuistats/221D_CourseMap_App/raw/main/images/Social_Media_Graph3.png', caption="Bar Chart Example", width=200)
+                st.image('https://github.com/byuistats/221D_CourseMap_App/raw/main/images/Social_Media_Graph3.png', caption="Bar Chart Example", width=400)
 
 
             with st.expander("Inferential Statistics"):
@@ -155,7 +155,7 @@ with tab1:
                                 y = "Count",
                             title = "Social Media Use by Biosex"
   )""", language="r")
-                st.image('https://github.com/byuistats/221D_CourseMap_App/raw/main/images/Two_Sample_Categorical_Chart.png', caption="Clustered Bar Chart Example", width=200)
+                st.image('https://github.com/byuistats/221D_CourseMap_App/raw/main/images/Two_Sample_Categorical_Chart.png', caption="Clustered Bar Chart Example", width=400)
                 st.code("""
                         ggplot(two_cat_dat, aes(fill = Most_Used_Social_Media, x=Biosex)) +
                             geom_bar(position=\"dodge\") +
@@ -165,7 +165,7 @@ with tab1:
                                 y = "Count",
                             title = "Social Media Use by Biosex"
   )""", language="r")
-                st.image('https://github.com/byuistats/221D_CourseMap_App/raw/main/images/Two_Sample_Categorical_Chart2.png', caption="Clustered Bar Chart Example", width=200)
+                st.image('https://github.com/byuistats/221D_CourseMap_App/raw/main/images/Two_Sample_Categorical_Chart2.png', caption="Clustered Bar Chart Example", width=400)
 
 
             with st.expander("Inferential Statistics"):
@@ -189,10 +189,10 @@ with tab1:
                 st.code("""
                         ggplot(data, aes(x = row_variable, fill = column_variable)) + 
                             geom_bar(position = \"dodge\")""", language="r")
-                st.image('https://github.com/byuistats/221D_CourseMap_App/raw/main/images/dodged_bar_example.png', caption="Clustered Bar Chart Example", width=200)
+                st.image('https://github.com/byuistats/221D_CourseMap_App/raw/main/images/dodged_bar_example.png', caption="Clustered Bar Chart Example", width=400)
             with st.expander("Inferential Statistics"):
                 st.write("Chi-square test")
-                st.image('https://github.com/byuistats/221D_CourseMap_App/raw/main/images/chi2_test_statistic.png', caption="Chi-Square Test Statistic", width=200)
+                st.image('https://github.com/byuistats/221D_CourseMap_App/raw/main/images/chi2_test_statistic.png', caption="Chi-Square Test Statistic", width=400)
                 st.image('https://github.com/byuistats/221D_CourseMap_App/raw/main/images/chi2_expected_counts.png', caption="Expected Counts", width=400)
                 st.code("""
                         tbl <- table(data$row_variable, data$column_variable)
