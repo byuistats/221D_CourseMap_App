@@ -23,6 +23,15 @@ with tab1:
                 st.write("Graph: Histogram")
                 st.image("https://github.com/byuistats/Math221D_Cannon/raw/master/Images/histogramggplotgallery1.png", caption="Histogram Example", width=200)
                 st.code("""
+                        # Base R Histogram
+                        library(mosaic)
+                        histogram(data$response_variable, 
+                                  xlab = "Temperature",
+                                  ylab = "Number of Days",
+                                  main = "La Guardia Airport Daily Mean Temperature")
+                        
+                        # ggplot2 Histogram
+                        library(ggplot2)
                         ggplot(data, aes(x = value)) + 
                             geom_histogram() +
                             labs(
@@ -47,6 +56,14 @@ with tab1:
                         """, language="r")
                 st.write("Graph: Side-by-side Boxplot")
                 st.code("""
+                        # Base R Boxplot: Categorical Explanatory Variable
+                        boxplot(data$response ~ data$explanatory,
+                                xlab = "Group",
+                                ylab = "Value",
+                                main = "Boxplot of Value by Group")
+                                
+                        # ggplot2 Boxplot
+                        library(tidyverse)
                         ggplot(data, aes(x = group, y = value)) + 
                             geom_boxplot()""", language="r")
                 st.image("https://github.com/byuistats/Math221D_Cannon/raw/master/Images/boxplotggplotgallery1.png", caption="Boxplot Example", width=300)
@@ -80,12 +97,22 @@ with tab1:
             with st.expander("Descriptive Statistics"):
                 st.write("Graph: Scatter plot")
                 st.code("""
+                        # Base R Scatterplot: Quantitative Explanatory Variable
+                        plot(data$response ~ data$explanatory,
+                             xlab = "Explanatory Variable",
+                             ylab = "Response Variable",
+                             main = "Scatterplot of Response vs. Explanatory")
+                        
+                        # ggplot2 Scatterplot
+                        library(tidyverse)
                         ggplot(data, aes(x = x, y = y)) + 
                             geom_point() + 
                             geom_smooth(method = 'lm')""", language="r")
                 st.image("https://github.com/byuistats/Math221D_Cannon/raw/master/Images/Regression_Line_Example.png", caption="Scatterplot Example", width=200)
                 st.write("Correlation Coefficient (r)")
-                st.code("""cor(data$x, data$y)""", language="r")
+                st.code("""
+                        cor(data$response ~ data$explanatory)
+                        """, language="r")
 
             with st.expander("Inferential Statistics"):
                 st.write("Simple Linear Regression")
@@ -110,6 +137,14 @@ with tab1:
                         """, language="r")
                 st.write("Graphs: Bar chart")
                 st.code("""
+                        # Base R Barplot
+                        prop_table_major <- sort(prop.table(table(creativity$Major_Category)), decreasing = TRUE)
+
+                        barplot(prop_table_major, las=2)
+                        
+                        # ggplot2 Barplot
+                        library(tidyverse)
+                        
                         ggplot(data, aes(x = Most_Used_Social_Media)) +
                             geom_bar() +
                             theme_bw() +
@@ -171,6 +206,16 @@ with tab1:
                         """, language="r")
                 st.write("Graphs: Clustered bar chart")
                 st.code("""
+                        # base R
+                        barplot(table(data$Most_Used_Social_Media, data$Biosex),   
+                                beside = TRUE,
+                                xlab = "Most Used Social Media",
+                                ylab = "Count",
+                                main = "Social Media Use by Biosex")
+                                
+                        # ggplot2
+                        library(tidyverse)
+                        
                         ggplot(two_cat_dat, aes(y = Most_Used_Social_Media, fill=Biosex)) +
                             geom_bar(position=\"dodge\") +
                             theme_bw() +
@@ -223,6 +268,17 @@ with tab1:
                         """, language="r")
                 st.write("Graphs: Clustered bar chart")
                 st.code("""
+                        
+                        # base R
+                        barplot(table(data$row_variable, data$column_variable),
+                                beside = TRUE,
+                                xlab = "Row Variable",
+                                ylab = "Count",
+                                main = "Clustered Bar Chart")
+                                
+                        # ggplot2
+                        library(tidyverse)
+                        
                         ggplot(data, aes(x = row_variable, fill = column_variable)) + 
                             geom_bar(position = \"dodge\")""", language="r")
                 st.image('https://github.com/byuistats/221D_CourseMap_App/raw/main/images/dodged_bar_example.png', caption="Clustered Bar Chart Example", width=400)
